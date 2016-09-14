@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FifaRanking.LatestGamesPage">
+
+	<ContentPage.Content>
+
+		<AbsoluteLayout>
+
+			<ListView
+				x:Name="listView"
+				CachingStrategy="RecycleElement"
+				BackgroundColor="Gray"
+				SeparatorColor="White"
+				HasUnevenRows="true"
+				ItemsSource="{Binding Games}"
+				ItemSelected="OnTapped"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All" >
+
+				    <ListView.ItemTemplate>
+				        <DataTemplate>
+
+				            <ViewCell>
+
+				            	<StackLayout
+				            		Padding="20, 0"
+				            		Orientation="Vertical"
+				            		VerticalOptions="CenterAndExpand">
+
+					            	<Label
+					            		TextColor="Black"
+					            		Text="{Binding Object.Date, StringFormat='Date: {0:MM/dd HH:mm}'}" />
+
+					            	<StackLayout
+					            		Orientation="Horizontal"
+				            			VerticalOptions="StartAndExpand">
+
+						            	<Label
+						            		TextColor="Green"
+						            		Text="{Binding Object.Team1Goals}"
+						            		VerticalTextAlignment="Center"
+						            		WidthRequest="30"
+						            		FontSize="30">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="{Binding Object.Team1Player1}"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="/"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="{Binding Object.Team1Player2}"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+				            		</StackLayout>
+
+					            	<StackLayout
+					            		Orientation="Horizontal"
+				            			VerticalOptions="EndAndExpand">
+
+						            	<Label
+						            		TextColor="Green"
+						            		Text="{Binding Object.Team2Goals}"
+						            		VerticalTextAlignment="Center"
+						            		WidthRequest="30"
+						            		FontSize="30">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="{Binding Object.Team2Player1}"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="/"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+						            	<Label
+						            		TextColor="White"
+						            		Text="{Binding Object.Team2Player2}"
+						            		VerticalTextAlignment="Center">
+
+						            	</Label>
+
+				            		</StackLayout>
+
+				            	</StackLayout>
+
+							</ViewCell>
+
+				        </DataTemplate>
+				    </ListView.ItemTemplate>
+
+			</ListView>
+
+			<AbsoluteLayout
+				BackgroundColor="White"
+				Opacity="0.5"
+				IsVisible="{Binding IsLoading}"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<ActivityIndicator 
+					IsRunning="{Binding IsLoading}"
+					IsVisible="{Binding IsLoading}"
+					AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+					AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+			</AbsoluteLayout>
+
+		</AbsoluteLayout>
+
+	</ContentPage.Content>
+</ContentPage>

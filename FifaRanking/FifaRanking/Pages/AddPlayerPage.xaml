@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FifaRanking.AddPlayerPage"
+	xmlns:ext="clr-namespace:FifaRanking;assembly=FifaRanking">
+
+	<ContentPage.Content>
+
+		<AbsoluteLayout>
+
+			<StackLayout
+				Padding="20, 40, 20, 0"
+				BackgroundColor="Gray"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<Entry
+					Placeholder="{x:Static ext:Strings.Name}"
+					Text="{Binding Name}" >
+				</Entry>
+
+				<Button
+					BorderRadius="0"
+					BorderWidth="1"
+					TextColor="White"
+					BorderColor="White"
+					BackgroundColor="Green"
+					Text="{x:Static ext:Strings.AddPlayer}"
+					Command="{Binding AddPlayerCommand}">
+				</Button>
+
+			</StackLayout>
+
+			<AbsoluteLayout
+				BackgroundColor="White"
+				Opacity="0.5"
+				IsVisible="{Binding IsLoading}"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<ActivityIndicator 
+					IsRunning="{Binding IsLoading}"
+					IsVisible="{Binding IsLoading}"
+					AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+					AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+			</AbsoluteLayout>
+
+		</AbsoluteLayout>
+
+	</ContentPage.Content>
+</ContentPage>

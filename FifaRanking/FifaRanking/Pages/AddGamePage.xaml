@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FifaRanking.AddGamePage"
+	xmlns:ext="clr-namespace:FifaRanking;assembly=FifaRanking">
+
+	<ContentPage.Content>
+
+		<AbsoluteLayout>
+
+			<StackLayout
+				Padding="20, 0"
+				BackgroundColor="Gray"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<StackLayout
+					Orientation="Vertical">
+
+					<Label
+						Text="Team 1"
+						FontSize="30">
+					</Label>
+
+					<ext:CustomPicker 
+						BackgroundColor="Green"
+						ItemsSource="{Binding Players}" 
+						SelectedItem="{Binding Team1Player1}" />
+
+					<ext:CustomPicker 
+						BackgroundColor="Green"
+						ItemsSource="{Binding Players}" 
+						SelectedItem="{Binding Team1Player2}" />
+
+					<StackLayout
+						Orientation="Horizontal">
+
+						<Stepper
+							Increment="1"
+							Minimum="0"
+							Value="{Binding Team1Goals}">
+
+						</Stepper>
+
+						<Label
+							VerticalTextAlignment="Center"
+							Text="{Binding Team1Goals, StringFormat='Goals: {0}'}">
+						</Label>
+
+					</StackLayout>
+
+				</StackLayout>
+
+				<BoxView HeightRequest="5" BackgroundColor="Green" />
+
+				<StackLayout
+					Orientation="Vertical">
+
+					<Label
+						Text="Team 2"
+						FontSize="30">
+					</Label>
+
+					<ext:CustomPicker 
+						BackgroundColor="Green"
+						ItemsSource="{Binding Players}" 
+						SelectedItem="{Binding Team2Player1}" />
+
+					<ext:CustomPicker 
+						BackgroundColor="Green"
+						ItemsSource="{Binding Players}" 
+						SelectedItem="{Binding Team2Player2}" />
+
+					<StackLayout
+						Orientation="Horizontal">
+
+						<Stepper
+							Increment="1"
+							Minimum="0"
+							Value="{Binding Team2Goals}">
+
+						</Stepper>
+
+						<Label
+							VerticalTextAlignment="Center"
+							Text="{Binding Team2Goals, StringFormat='Goals: {0}'}">
+						</Label>
+
+					</StackLayout>
+
+				</StackLayout>
+
+				<Button
+					BorderRadius="0"
+					BorderWidth="1"
+					TextColor="White"
+					BorderColor="White"
+					BackgroundColor="Green"
+					Text="{x:Static ext:Strings.AddGame}"
+					Command="{Binding AddGameCommand}">
+				</Button>
+
+			</StackLayout>
+
+			<AbsoluteLayout
+				BackgroundColor="White"
+				Opacity="0.5"
+				IsVisible="{Binding IsLoading}"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<ActivityIndicator 
+					IsRunning="{Binding IsLoading}"
+					IsVisible="{Binding IsLoading}"
+					AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+					AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+			</AbsoluteLayout>
+
+		</AbsoluteLayout>
+
+	</ContentPage.Content>
+</ContentPage>

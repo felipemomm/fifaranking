@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FifaRanking.LoginPage"
+	xmlns:ext="clr-namespace:FifaRanking;assembly=FifaRanking">
+
+	<ContentPage.Content>
+
+		<AbsoluteLayout>
+
+			<StackLayout
+				Padding="20, 40, 20, 0"
+				BackgroundColor="Gray"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<Label
+					TextColor="White"
+					Text="{x:Static ext:Strings.AppName}"
+					HorizontalTextAlignment="Center"
+					FontSize="30">
+				</Label>
+
+				<Entry
+					Placeholder="{x:Static ext:Strings.User}"
+					Text="{Binding User}" >
+				</Entry>
+
+				<Entry
+					Placeholder="{x:Static ext:Strings.Password}"
+					Text="{Binding Password}"
+					IsPassword="true">
+				</Entry>
+
+				<Button
+					BorderRadius="0"
+					BorderWidth="1"
+					TextColor="White"
+					BorderColor="White"
+					BackgroundColor="Green"
+					Text="{x:Static ext:Strings.Login}"
+					Command="{Binding LoginCommand}">
+				</Button>
+
+				<Button
+					BorderRadius="0"
+					BorderWidth="1"
+					TextColor="White"
+					BorderColor="White"
+					BackgroundColor="Black"
+					Text="{x:Static ext:Strings.CreateAccount}"
+					Command="{Binding CreateCommand}">
+				</Button>
+
+			</StackLayout>
+
+			<AbsoluteLayout
+				BackgroundColor="White"
+				Opacity="0.5"
+				IsVisible="{Binding IsLoading}"
+				AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+				AbsoluteLayout.LayoutFlags="All">
+
+				<ActivityIndicator 
+					IsRunning="{Binding IsLoading}"
+					IsVisible="{Binding IsLoading}"
+					AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+					AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+			</AbsoluteLayout>
+
+		</AbsoluteLayout>
+
+	</ContentPage.Content>
+</ContentPage>

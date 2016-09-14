@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>Fifa Ranking</string>
+	<string>Fifinha Ranking</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fifaranking</string>
 	<key>CFBundleShortVersionString</key>
@@ -37,6 +37,6 @@
 	<key>XSAppIconAssets</key>
 	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleName</key>
-	<string>Fifa Ranking</string>
+	<string>Fifinha Ranking</string>
 </dict>
 </plist>

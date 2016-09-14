@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="FifaRanking.SideMenuPage"
+	xmlns:ext="clr-namespace:FifaRanking;assembly=FifaRanking">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+            <Style x:Key="MenuItemButton" TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Gray"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BorderRadius" Value="0"/>
+            </Style>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ContentPage.Content>
+
+		<StackLayout
+			Padding="10, 30, 10, 0"
+			BackgroundColor="Green"
+			HorizontalOptions="FillAndExpand">
+
+			<Label
+				TextColor="White"
+				Text="{x:Static ext:Strings.AppName}"
+				HorizontalTextAlignment="Center"
+				FontSize="30">
+			</Label>
+
+			<Button
+				Text="{x:Static ext:Strings.Ranking}"
+            	Style="{StaticResource MenuItemButton}"
+				HorizontalOptions="FillAndExpand"
+				Command="{Binding TapMenuItemCommand}"
+				CommandParameter="{x:Static ext:MenuItem.Ranking}">
+			</Button>
+
+			<Button
+				Text="{x:Static ext:Strings.Players}"
+            	Style="{StaticResource MenuItemButton}"
+				HorizontalOptions="FillAndExpand"
+				Command="{Binding TapMenuItemCommand}"
+				CommandParameter="{x:Static ext:MenuItem.Players}">
+			</Button>
+
+			<Button
+				Text="{x:Static ext:Strings.LatestGames}"
+            	Style="{StaticResource MenuItemButton}"
+				HorizontalOptions="FillAndExpand"
+				Command="{Binding TapMenuItemCommand}"
+				CommandParameter="{x:Static ext:MenuItem.LatestGames}">
+			</Button>
+
+			<Button
+				Text="{x:Static ext:Strings.AddGame}"
+            	Style="{StaticResource MenuItemButton}"
+				HorizontalOptions="FillAndExpand"
+				Command="{Binding TapMenuItemCommand}"
+				CommandParameter="{x:Static ext:MenuItem.AddGame}">
+			</Button>
+
+			<Button
+				Text="{x:Static ext:Strings.Logout}"
+            	Style="{StaticResource MenuItemButton}"
+				HorizontalOptions="FillAndExpand"
+				Command="{Binding TapMenuItemCommand}"
+				CommandParameter="{x:Static ext:MenuItem.Logout}">
+			</Button>
+
+		</StackLayout>
+
+	</ContentPage.Content>
+</ContentPage>
