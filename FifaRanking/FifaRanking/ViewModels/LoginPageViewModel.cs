@@ -76,10 +76,16 @@ namespace FifaRanking
 
 		private bool AreFieldsValid()
 		{
-			bool valid = !String.IsNullOrWhiteSpace(User) && !String.IsNullOrWhiteSpace(Password) && User.EndsWith("@arctouch.com");
+			bool valid = !String.IsNullOrWhiteSpace(User) && !String.IsNullOrWhiteSpace(Password);
 			if (!valid)
 			{
 				Device.BeginInvokeOnMainThread(async () => await App.DisplayAlertAsync("Please fill User and Password fields."));
+				return false;
+			}
+			else if (!User.EndsWith("@arctouch.com"))
+			{
+				Device.BeginInvokeOnMainThread(async () => await App.DisplayAlertAsync("Please use a valid email domain."));
+				return false;
 			}
 
 			return valid;
