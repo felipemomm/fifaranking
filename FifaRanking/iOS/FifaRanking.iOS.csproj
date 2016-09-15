@@ -150,4 +150,7 @@
     <BundleResource Include="Resources\menu%402x.png" />
     <BundleResource Include="Resources\menu%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+  </ItemGroup>
 </Project>
