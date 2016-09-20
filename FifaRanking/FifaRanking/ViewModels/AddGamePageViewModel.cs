@@ -40,9 +40,13 @@ namespace FifaRanking
 
 		public async void LoadPlayers()
 		{
+			IsLoading = true;
+
 			var players = await App.Instance.RankingManager.GetPlayers();
 
 			Players = new ObservableCollection<FirebaseObject<Player>>(players);
+
+			IsLoading = false;
 		}
 
 		private async void AddGame()

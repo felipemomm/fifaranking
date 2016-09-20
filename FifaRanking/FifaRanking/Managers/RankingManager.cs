@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
+using Firebase.Xamarin.Database.Streaming;
 
 namespace FifaRanking
 {
@@ -54,7 +55,7 @@ namespace FifaRanking
 			return items.Where(i => i.Object.Ranking != null).OrderBy(i => i.Object.Ranking).ToList();
 		}
 
-		public async Task<List<FirebaseObject<Game>>> GetLatestGames()
+		public async Task<List<FirebaseObject<Game>>> GetLatestGames(int max)
 		{
 			FirebaseClient firebase = new FirebaseClient(Constants.FIREBASE_URL);
 
@@ -63,7 +64,17 @@ namespace FifaRanking
 	            //.WithAuth(App.Instance.AuthManager.Auth.FirebaseToken)
 				.OnceAsync<Game>();
 
-			return items.OrderByDescending(i => i.Object.Date).Take(10).ToList();
+			return items.OrderByDescending(i => i.Object.Date).Take(max).ToList();
+		}
+
+		public IObservable<FirebaseEvent<Game>> GetLatestGamesByStreaming()
+		{
+			FirebaseClient firebase = new FirebaseClient(Constants.FIREBASE_URL);
+
+			return firebase
+				.Child("games")
+				//.WithAuth(App.Instance.AuthManager.Auth.FirebaseToken)
+				.AsObservable<Game>();
 		}
 
 		public async Task UpdatePlayers(List<FirebaseObject<Player>> players)
@@ -126,6 +137,16 @@ namespace FifaRanking
 					AddUnrankedPlayerToRanking(player, players);
 				}
 			}
+		}
+
+		public IObservable<FirebaseEvent<Player>> GetPlayerByStreaming()
+		{
+			FirebaseClient firebase = new FirebaseClient(Constants.FIREBASE_URL);
+
+			return firebase
+				.Child("players")
+				//.WithAuth(App.Instance.AuthManager.Auth.FirebaseToken)
+				.AsObservable<Player>();
 		}
 
 		private void UpdateWinnerGoalsAndWins(FirebaseObject<Player> winner, int goalsScored, int goalsAgainst)
