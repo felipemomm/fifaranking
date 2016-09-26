@@ -59,6 +59,7 @@ namespace FifaRanking
 				{
 					Game game = new Game();
 					game.Date = DateTime.Now;
+					game.ReportedBy = App.Instance.AuthManager.Auth.User.Email;
 
 					game.Team1Player1 = Team1Player1.Key;
 					game.Team1Player2 = Team1Player2.Key;

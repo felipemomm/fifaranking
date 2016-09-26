@@ -61,10 +61,12 @@ namespace FifaRanking
 
 			var items = await firebase
 				.Child("games")
+				.OrderByKey()
+				.LimitToLast(max)
 	            //.WithAuth(App.Instance.AuthManager.Auth.FirebaseToken)
 				.OnceAsync<Game>();
 
-			return items.OrderByDescending(i => i.Object.Date).Take(max).ToList();
+			return items.OrderByDescending(i => i.Object.Date).ToList();
 		}
 
 		public IObservable<FirebaseEvent<Game>> GetLatestGamesByStreaming()

@@ -28,6 +28,9 @@ namespace FifaRanking
 
 		[DataMember(Name = "date")]
 		public DateTime Date { get; set; }
+
+		[DataMember(Name = "reportedBy")]
+		public string ReportedBy { get; set; }
 	}
 }
 
